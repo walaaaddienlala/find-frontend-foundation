@@ -30,3 +30,22 @@ __v0_jsx-dev-runtime.ts
 .snowflake/
 .design-cache/
 .v0-trash/
+
+# Isolated Phase 0 test compilation output
+.phase0-test-build/
+.phase1-test-build/
+.security-test-build/
+tsconfig.tsbuildinfo
+project-files.txt
+.scaffold-test-build/
+# Local review artifacts and duplicate files
+FIND_VERIFICATION_FRONTEND_REVIEW*.zip
+_verification_review/
+app/admin/verification/page.tsx.backup
+env.example.txt
+
+# Legacy generated file
+lib/types.js
+
+# Local file inventory
+project-files.txt

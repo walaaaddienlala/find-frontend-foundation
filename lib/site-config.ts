@@ -13,6 +13,8 @@ export const siteConfig = {
 export const mainNav: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Opportunities', href: '/opportunities' },
+  { label: 'Deadlines', href: '/deadlines' },
+  { label: 'Compare', href: '/compare' },
   { label: 'How It Works', href: '/how-it-works' },
   { label: 'About', href: '/about' },
 ]
@@ -27,6 +29,8 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     title: 'Explore',
     items: [
       { label: 'Opportunities', href: '/opportunities' },
+      { label: 'Deadlines', href: '/deadlines' },
+      { label: 'Compare', href: '/compare' },
       { label: 'How It Works', href: '/how-it-works' },
     ],
   },
@@ -39,6 +43,6 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
   },
   {
     title: 'Account',
-    items: [authNav.signIn, authNav.getStarted],
+    items: [{ label: 'Dashboard', href: '/dashboard' }, authNav.signIn, authNav.getStarted],
   },
 ]

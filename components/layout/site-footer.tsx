@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { Logo } from '@/components/brand/logo'
 import { Container } from '@/components/layout/page-container'
+import { navSections } from '@/lib/ecosystem/navigation'
 import { footerNav, siteConfig } from '@/lib/site-config'
 
 export function SiteFooter() {
@@ -31,6 +32,21 @@ export function SiteFooter() {
                     >
                       {item.label}
                     </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
+        </div>
+
+        <div className="mt-10 grid gap-6 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-6">
+          {navSections.map((section) => (
+            <nav key={section.title} aria-label={`${section.title} (ecosystem)`}>
+              <h2 className="font-heading text-sm font-semibold text-foreground">{section.title}</h2>
+              <ul className="mt-3 flex flex-col gap-2">
+                {section.items.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="text-sm text-muted-foreground transition-colors hover:text-primary">{item.label}</Link>
                   </li>
                 ))}
               </ul>

@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "rootDir": ".",
+    "outDir": ".scaffold-test-build",
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "lib/types.ts",
+    "lib/env.ts",
+    "lib/opportunities/*.ts",
+    "lib/dashboard/next-actions.ts",
+    "lib/features/registry.ts",
+    "lib/services/result.ts",
+    "lib/notifications/*.ts",
+    "lib/documents/policy.ts",
+    "lib/ai/*.ts",
+    "lib/models/*.ts",
+    "lib/agent/*.ts",
+    "lib/channels/*.ts",
+    "lib/applications/transitions.ts",
+    "lib/format.ts",
+    "lib/validation/url.ts",
+    "lib/ecosystem/*.ts"
+  ]
+}

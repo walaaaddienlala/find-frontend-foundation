@@ -30,10 +30,15 @@ export const opportunityTypeLabel: Record<OpportunityType, string> = {
   fellowship: 'Fellowship',
   'graduate-program': 'Graduate program',
   competition: 'Competition',
+  volunteering: 'Volunteering',
+  conference: 'Conference',
+  workshop: 'Workshop',
+  other: 'Other',
 }
 
 export const workModeLabel: Record<WorkMode, string> = {
   remote: 'Remote',
   hybrid: 'Hybrid',
   'on-site': 'On-site',
+  unspecified: 'Not specified',
 }

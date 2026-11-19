@@ -2,9 +2,10 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 
-import { SiteFooter } from '@/components/layout/site-footer'
-import { SiteHeader } from '@/components/layout/site-header'
+import { ChatWidget } from '@/components/chat/chat-widget'
+import { SiteChrome } from '@/components/layout/site-chrome'
 import { siteConfig } from '@/lib/site-config'
+
 import './globals.css'
 
 const body = Inter({
@@ -43,13 +44,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${body.variable} ${display.variable} bg-background`}>
+    <html
+      lang="en"
+      className={`${body.variable} ${display.variable} bg-background`}
+    >
       <body className="flex min-h-dvh flex-col">
-        <SiteHeader />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <SiteFooter />
+        <SiteChrome>{children}</SiteChrome>
+
+        {process.env.NEXT_PUBLIC_ENABLE_CHATBOT === 'true' && <ChatWidget />}
+
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

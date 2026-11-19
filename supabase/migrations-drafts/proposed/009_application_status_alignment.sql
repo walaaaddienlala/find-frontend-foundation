@@ -1,0 +1,27 @@
+-- ====================================================================
+-- TEMPLATE ONLY — contains NO executable statements. NOT APPLIED.
+-- Blocked on ../phase2-applications-preflight.sql (query 2: the real
+-- constraint name and allowed values on public.applications.status).
+-- ====================================================================
+-- Confirmed target model (product decision): preparing, ready_to_apply, submitted,
+-- under_review, interview, accepted, rejected, withdrawn. `saved` stops being an
+-- application status (bookmarks live in saved_opportunities). Legacy values
+-- `in_progress` and `waitlisted` stay accepted until a reviewed data migration.
+--
+-- Status history already exists as application_activity (used by the app), so no
+-- new history table is proposed here.
+--
+-- begin;
+--   alter table public.applications drop constraint <CONSTRAINT_NAME_FROM_PREFLIGHT>;
+--   alter table public.applications
+--     add constraint applications_status_check
+--     check (status in ('saved','preparing','in_progress','ready_to_apply','submitted',
+--                       'under_review','interview','accepted','rejected','waitlisted','withdrawn'))
+--     not valid;
+--   alter table public.applications validate constraint applications_status_check;
+-- commit;
+--
+-- App changes required together with this (separate PR):
+--   lib/data/applications.ts ApplicationStatus, app/applications/actions.ts allowedStatuses,
+--   components/applications/* status selects, lib/status.ts labels, and removal of `saved`
+--   from the writable list once legacy rows are migrated.

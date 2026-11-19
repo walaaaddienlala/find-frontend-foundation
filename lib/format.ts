@@ -5,7 +5,18 @@ const deadlineFormatter = new Intl.DateTimeFormat('en', {
   timeZone: 'UTC',
 })
 
-/** Formats an ISO date (YYYY-MM-DD) deterministically on server and client. */
-export function formatDeadline(isoDate: string) {
-  return deadlineFormatter.format(new Date(`${isoDate}T00:00:00Z`))
+export function formatDeadline(
+  isoDate: string | null | undefined,
+): string {
+  if (!isoDate || !isoDate.trim()) {
+    return 'No deadline specified'
+  }
+
+  const date = new Date(`${isoDate.slice(0, 10)}T00:00:00Z`)
+
+  if (Number.isNaN(date.getTime())) {
+    return 'No deadline specified'
+  }
+
+  return deadlineFormatter.format(date)
 }

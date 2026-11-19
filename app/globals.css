@@ -8,7 +8,6 @@
  * Tailwind utilities (bg-primary, text-cta, bg-success-soft, ...) and never
  * hard-code hex or oklch values.
  */
-
 @theme inline {
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-display), var(--font-body), ui-sans-serif, system-ui, sans-serif;
